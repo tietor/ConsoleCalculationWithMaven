@@ -1,8 +1,15 @@
 import static org.junit.Assert.*;
+
+import org.junit.Before;
 import org.junit.Test;
 
 public class TestCalculator {
-  Calculator calculator;
+  private Calculator calculator;
+
+  @Before
+  public void setUp() {
+    calculator = new Calculator();
+  }
 
   @Test
   public void testSummeZweiPositiveIsOk() {
