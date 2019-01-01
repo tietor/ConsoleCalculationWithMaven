@@ -1,9 +1,10 @@
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertTrue;
 
 import org.junit.Before;
 import org.junit.Test;
 
 public class TestCalculator {
+
   private Calculator calculator;
 
   @Before
@@ -21,5 +22,15 @@ public class TestCalculator {
   public void testSubtractionZweiPositiveIsOk() {
     calculator = new Calculator();
     assertTrue(calculator.subtraktion(25, 10) == 15);
+  }
+
+  @Test(expected = ArithmeticException.class)
+  public void testDivisionByZeroThrowsException() {
+    calculator.division(10, 0);
+  }
+
+  @Test
+  public void testDivisionZweiPositiveIsOk() throws ArithmeticException {
+    assertTrue(calculator.division(16, 4) == 4);
   }
 }
