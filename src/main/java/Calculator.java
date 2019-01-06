@@ -1,15 +1,30 @@
 public class Calculator {
 
-  public int summe(int summand1, int summand2) {
+  public int summe(int summand1, int summand2) throws java.lang.ArithmeticException {
+    long value = (long) summand1 + (long) summand2;
+    if ((value > Integer.MAX_VALUE) || (value < Integer.MIN_VALUE)) {
+      throw new java.lang.ArithmeticException();
+    }
     return summand1 + summand2;
   }
 
   public int subtraktion(int value1, int value2) {
+    long value = (long) value1 - (long) value2;
+    if ((value > Integer.MAX_VALUE) || (value < Integer.MIN_VALUE)) {
+      throw new java.lang.ArithmeticException();
+    }
     return value1 - value2;
   }
 
   public int division(int value1, int value2) {
     return value1 / value2;
+  }
+
+  public String convertNumberToBinary(int value) {
+    if (value < 0) {
+      throw new ArithmeticException();
+    }
+      return Integer.toBinaryString(value);
   }
 
   // Um diese Methode zu testen, habe ich eine Testklasse im gleichen package erstellt die CalculatorVIsibilityTest heisst
