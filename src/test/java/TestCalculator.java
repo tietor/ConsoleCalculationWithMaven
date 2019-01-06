@@ -133,6 +133,21 @@ public class TestCalculator {
     assertEquals(-2, calculator.division(10, -4));
   }
 
+  @Test(expected = ArithmeticException.class)
+  public void testBinaryWithNegativeNumberOverflowHandlingThrowsException() {
+    assertEquals("0", calculator.convertNumberToBinary(-2));
+  }
+
+  @Test
+  public void testBinaryWithZeroIsOk() {
+    assertEquals("0", calculator.convertNumberToBinary(0));
+  }
+
+  @Test
+  public void testBinayWithPositiveNumberIsOK() {
+    assertEquals("1010", calculator.convertNumberToBinary(10));
+  }
+
   @Test
   public void testWurzelIsOK() {
     assertTrue(calculator.wurzel(64) == 8);

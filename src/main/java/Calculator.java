@@ -20,6 +20,13 @@ public class Calculator {
     return value1 / value2;
   }
 
+  public String convertNumberToBinary(int value) {
+    if (value < 0) {
+      throw new ArithmeticException();
+    }
+      return Integer.toBinaryString(value);
+  }
+
   // Um diese Methode zu testen, habe ich eine Testklasse im gleichen package erstellt die CalculatorVIsibilityTest heisst
   protected int multiplikation(int value1, int value2) {
     return value1 * value2;
