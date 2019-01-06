@@ -47,6 +47,7 @@ public class TestCalculator {
   public void testSummeZweiNegativeWithOverflowThrowsException() {
     assertTrue(calculator.summe(Integer.MIN_VALUE, -70) != 0);
   }
+
   @Test
   public void testSummeErgebnisIsNullOk() {
     assertEquals(0, calculator.summe(-45, 45));
@@ -54,7 +55,42 @@ public class TestCalculator {
 
   @Test
   public void testSubtractionZweiPositiveIsOk() {
-    assertTrue(calculator.subtraktion(25, 10) == 15);
+    assertEquals(15, calculator.subtraktion(25, 10));
+  }
+
+  @Test
+  public void testSubtractionEinsNegativeEinsPositiveIsOK() {
+    assertEquals(15, calculator.subtraktion(10, -5));
+  }
+
+  @Test
+  public void testSubtractionZweiNegativeIsOK() {
+    assertEquals(-10, calculator.subtraktion(-20, -10));
+  }
+
+  @Test
+  public void testSubtractionNullundPositiveZahlIsOk() {
+    assertEquals(25, calculator.subtraktion(25, 0));
+  }
+
+  @Test(expected = ArithmeticException.class)
+  public void testSubtractionEinsNegativEinsPositivOverflowHandlingThrowsException() {
+    assertTrue(calculator.subtraktion(Integer.MIN_VALUE, 2) != 0);
+  }
+
+  @Test
+  public void testSubtractionvonIntegerMinValueIsOk() {
+    assertEquals(Integer.MIN_VALUE, calculator.subtraktion(Integer.MIN_VALUE + 5, 5));
+  }
+
+  @Test
+  public void testSubtractionFirstNumberIsNullSecondNumberIsPositiveResultIsNegative() {
+    assertEquals(-25, calculator.subtraktion(0, 25));
+  }
+
+  @Test
+  public void testSubtractionFirstNumberIsPositiveSecondNumberIsNullResultIsLikeFirstNumber() {
+    assertEquals(25, calculator.subtraktion(25, 0));
   }
 
   @Test(expected = ArithmeticException.class)
