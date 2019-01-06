@@ -31,4 +31,9 @@ public class TestCalculator {
   public void testDivisionZweiPositiveIsOk() throws ArithmeticException {
     assertTrue(calculator.division(16, 4) == 4);
   }
+
+  @Test
+  public void testWurzelIsOK() {
+    assertTrue(calculator.wurzel(64) == 8);
+  }
 }
