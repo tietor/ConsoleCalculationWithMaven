@@ -95,12 +95,42 @@ public class TestCalculator {
 
   @Test(expected = ArithmeticException.class)
   public void testDivisionByZeroThrowsException() {
-    calculator.division(10, 0);
+    assertTrue(calculator.division(10, 0) != 0);
   }
 
   @Test
-  public void testDivisionZweiPositiveIsOk() throws ArithmeticException {
-    assertTrue(calculator.division(16, 4) == 4);
+  public void testDivisionZweiPositiveIsOk() {
+    assertEquals(4, calculator.division(16, 4));
+  }
+
+  @Test
+  public void testDivisionResultIsRounded() {
+    assertTrue(calculator.division(10, 4) == 2);
+  }
+
+  @Test
+  public void testDivisionResultIsNullIsOk() {
+    assertEquals(0, calculator.division(0, 15));
+  }
+
+  @Test
+  public void testDivisionOnePositiveOneNegativeIsOk() {
+    assertEquals(-2, calculator.division(6, -3));
+  }
+
+  @Test
+  public void testDivisionTwoNegativeIsOk() {
+    assertEquals(5, calculator.division(-20, -4));
+  }
+
+  @Test
+  public void testDivisionFirstNumberIsNegativeSecondNumberPositiveIsOk() {
+    assertEquals(-3, calculator.division(-12, 4));
+  }
+
+  @Test
+  public void testDivisionNegativeResultIsRounded() {
+    assertEquals(-2, calculator.division(10, -4));
   }
 
   @Test
