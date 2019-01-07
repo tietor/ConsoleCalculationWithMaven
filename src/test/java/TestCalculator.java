@@ -149,6 +149,16 @@ public class TestCalculator {
   }
 
   @Test
+  public void testBinaryWithIntegerMaxValueIsOk() {
+    assertEquals(Integer.toBinaryString(Integer.MAX_VALUE), calculator.convertNumberToBinary(Integer.MAX_VALUE));
+  }
+
+  @Test(expected = ArithmeticException.class)
+  public void testBinaryWithIntegerMinValueOverflowHandlingThrowsException() {
+    assertEquals("0", calculator.convertNumberToBinary(Integer.MIN_VALUE));
+  }
+
+  @Test
   public void testWurzelIsOK() {
     assertTrue(calculator.wurzel(64) == 8);
   }
